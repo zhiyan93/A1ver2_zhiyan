@@ -14,20 +14,28 @@ protocol AddSightDelegate : AnyObject {
 
 class NewSightViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
-    weak var addSightDelegate: AddSightDelegate?
+   // weak var addSightDelegate: AddSightDelegate?
+    weak var databaseController: DatabaseProtocol?
     
     @IBOutlet weak var sightDesc: UITextView!
     @IBOutlet weak var sightName: UITextField!
     @IBOutlet weak var sightLat: UITextField!
     @IBOutlet weak var sightLon: UITextField!
     @IBOutlet weak var sightImage: UIImageView!
+    @IBOutlet weak var sightIcon: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Get the database controller once from the App Delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController
     }
     
+    @IBAction func selectIconBtn(_ sender: Any) {
+         showActionSheet()
+    }
     @IBAction func addSightBtn(_ sender: Any) {
         
         if sightName.text != "" && sightDesc.text != "" && sightImage.image != nil{
@@ -36,8 +44,11 @@ class NewSightViewController: UIViewController , UIImagePickerControllerDelegate
             let image = sightImage.image!
             let lat = sightLat.text!
             let lon = sightLon.text!
-            let sight = Sight(image: image, name: name, desc: desc, lat: lat, lon: lon)
-            let _ = addSightDelegate!.addSight(newSight: sight)
+            let icon = sightIcon.text!
+           // let sight = Sight(image: image, name: name, desc: desc, lat: lat, lon: lon,icon: icon)
+          //  let _ = addSightDelegate!.addSight(newSight: sight)
+            let _ = databaseController!.addSight(name: name, desc: desc, image: image, lat: lat, lon: lon, icon: icon)
+    
             navigationController?.popViewController(animated: true)
             return
         }
@@ -88,6 +99,22 @@ class NewSightViewController: UIViewController , UIImagePickerControllerDelegate
         let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
         sightImage.image = pickedImage
+    }
+    
+    func showActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel  = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let icon1 = UIAlertAction(title: "icon1", style: .default) { action in self.sightIcon.text = "icon1"}
+        let icon2 = UIAlertAction(title: "icon2", style: .default) { action in self.sightIcon.text = "icon2"}
+        let icon3 = UIAlertAction(title: "icon3", style: .default) { action in self.sightIcon.text = "icon3"
+            
+    }
+        actionSheet.addAction(cancel)
+        actionSheet.addAction(icon1)
+        actionSheet.addAction(icon2)
+        actionSheet.addAction(icon3)
+        
+        present(actionSheet,animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

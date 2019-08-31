@@ -7,30 +7,36 @@
 //
 
 import UIKit
+import CoreData
 
-class SightsTableViewController: UITableViewController,AddSightDelegate ,UISearchResultsUpdating {
-    
-    func addSight(newSight: Sight) -> Bool {
-        sights.append(newSight)
-        filteredSights.append(newSight)
-        tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: filteredSights.count - 1, section: 0)], with: .automatic)
-        tableView.endUpdates()
-        tableView.reloadSections([SECTION_COUNT], with: .automatic)
-        return true
-    }
+class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,DatabaseListener{
+    //AddSightDelegate
+//    func addSight(newSight: Sight) -> Bool {
+//        sights.append(newSight)
+//        filteredSights.append(newSight)
+//        tableView.beginUpdates()
+//        tableView.insertRows(at: [IndexPath(row: filteredSights.count - 1, section: 0)], with: .automatic)
+//        tableView.endUpdates()
+//        tableView.reloadSections([SECTION_COUNT], with: .automatic)
+//        return true
+//    }
     
     let SECTION_SIGHT = 0
     let SECTION_COUNT = 1
     let CELL_SIGHT = "sightCell"
     let CELL_COUNT = "sightSizeCell"
 
-    var sights : [Sight] = []
-    var filteredSights: [Sight] = []
-    weak var addSightDelegate: AddSightDelegate?
+    var sights : [SightEntity] = []  //Sight
     
+    var filteredSights: [SightEntity] = []
+    weak var addSightDelegate: AddSightDelegate?
+    weak var databaseController : DatabaseProtocol?  //coredata
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController   //coredata
+        
         createDefaultSights()
         filteredSights = sights
         // Uncomment the following line to preserve selection between presentations
@@ -49,10 +55,30 @@ class SightsTableViewController: UITableViewController,AddSightDelegate ,UISearc
         definesPresentationContext = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    var listenerType = ListenerType.sight
+//    func onTeamChange(change: DatabaseChange, teamHeroes: [SuperHero]) {
+//        // Won't be called.
+//    }
+    
+    func onSightListChange(change: DatabaseChange, sightsDB : [SightEntity]) {
+        sights = sightsDB
+        updateSearchResults(for: navigationItem.searchController!)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text?.lowercased(), searchText.count > 0 {
-            filteredSights = sights.filter({(sight: Sight) -> Bool in
-                return sight.name.lowercased().contains(searchText)
+        if let searchText = searchController.searchBar.text, searchText.count > 0 {  //lowercased()
+            filteredSights = sights.filter({(sight: SightEntity) -> Bool in
+                return sight.name!.contains(searchText)  //lowercased()
             })
         }
         else {
@@ -85,7 +111,7 @@ class SightsTableViewController: UITableViewController,AddSightDelegate ,UISearc
             let sight = filteredSights[indexPath.row]
             sightCell.sightName.text = sight.name
             sightCell.sightDesc.text = sight.desc
-            sightCell.sightImage.image = sight.image
+            sightCell.sightImage.image = UIImage(data: sight.image! as Data)
             return sightCell
         }
         
@@ -111,19 +137,19 @@ class SightsTableViewController: UITableViewController,AddSightDelegate ,UISearc
 //        displayMessage(title: "Party Full", message: "Cannot add any more members to party")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "addSightSegue" {
-            let destination = segue.destination as! NewSightViewController
-            destination.addSightDelegate =  self
-        }
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//        if segue.identifier == "addSightSegue" {
+//            let destination = segue.destination as! NewSightViewController
+//            destination.addSightDelegate =  self
+//        }
+//
+//    }
     
     func createDefaultSights() {
-        sights.append(Sight(image: #imageLiteral(resourceName: "Old Treasury"), name: "Shrine of Remembrance", desc: "Shrine of Remembrance desc", lat: "100", lon: "100"))
-        sights.append(Sight(image: #imageLiteral(resourceName: "Melbourne Museum"), name: "Mebourne Museum", desc: "Mebourne Museum desc", lat: "100", lon: "100"))
+//        sights.append(SightEntity(image: #imageLiteral(resourceName: "Old Treasury"), name: "Shrine of Remembrance", desc: "Shrine of Remembrance desc", lat: "100", lon: "100",icon: "icon1"))
+//        sights.append(SightEntity(image: #imageLiteral(resourceName: "Melbourne Museum"), name: "Mebourne Museum", desc: "Mebourne Museum desc", lat: "100", lon: "100",icon: "icon2"))
     }
     
     func displayMessage(title: String, message: String) {

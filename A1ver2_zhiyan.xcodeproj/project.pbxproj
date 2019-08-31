@@ -9,20 +9,24 @@
 /* Begin PBXBuildFile section */
 		262152EC231956F10003F658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262152EB231956F10003F658 /* AppDelegate.swift */; };
 		262152F1231956F10003F658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262152EF231956F10003F658 /* Main.storyboard */; };
-		262152F4231956F10003F658 /* A1ver2_zhiyan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 262152F2231956F10003F658 /* A1ver2_zhiyan.xcdatamodeld */; };
 		262152F6231956F30003F658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 262152F5231956F30003F658 /* Assets.xcassets */; };
 		262152F9231956F30003F658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262152F7231956F30003F658 /* LaunchScreen.storyboard */; };
 		262153012319573D0003F658 /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262153002319573D0003F658 /* Sight.swift */; };
 		26215303231957A10003F658 /* SightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26215302231957A10003F658 /* SightsTableViewController.swift */; };
 		26215305231958260003F658 /* NewSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26215304231958260003F658 /* NewSightViewController.swift */; };
 		26215307231958710003F658 /* SightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26215306231958710003F658 /* SightTableViewCell.swift */; };
+		264B0E3E231A69CF003ED57E /* SightModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E3C231A69CF003ED57E /* SightModel.xcdatamodeld */; };
+		264B0E5D231AB429003ED57E /* SightEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E5B231AB429003ED57E /* SightEntity+CoreDataClass.swift */; };
+		264B0E5E231AB429003ED57E /* SightEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E5C231AB429003ED57E /* SightEntity+CoreDataProperties.swift */; };
+		264B0E62231AB50B003ED57E /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E5F231AB50B003ED57E /* DatabaseProtocol.swift */; };
+		264B0E63231AB50B003ED57E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E60231AB50B003ED57E /* CoreDataController.swift */; };
+		264B0E64231AB50B003ED57E /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E61231AB50B003ED57E /* MulticastDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		262152E8231956F10003F658 /* A1ver2_zhiyan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A1ver2_zhiyan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		262152EB231956F10003F658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		262152F0231956F10003F658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		262152F3231956F10003F658 /* A1ver2_zhiyan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = A1ver2_zhiyan.xcdatamodel; sourceTree = "<group>"; };
 		262152F5231956F30003F658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		262152F8231956F30003F658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		262152FA231956F30003F658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +34,12 @@
 		26215302231957A10003F658 /* SightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightsTableViewController.swift; sourceTree = "<group>"; };
 		26215304231958260003F658 /* NewSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSightViewController.swift; sourceTree = "<group>"; };
 		26215306231958710003F658 /* SightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTableViewCell.swift; sourceTree = "<group>"; };
+		264B0E3D231A69CF003ED57E /* SightModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SightModel.xcdatamodel; sourceTree = "<group>"; };
+		264B0E5B231AB429003ED57E /* SightEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SightEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		264B0E5C231AB429003ED57E /* SightEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SightEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		264B0E5F231AB50B003ED57E /* DatabaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		264B0E60231AB50B003ED57E /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		264B0E61231AB50B003ED57E /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +72,39 @@
 		262152EA231956F10003F658 /* A1ver2_zhiyan */ = {
 			isa = PBXGroup;
 			children = (
+				264B0E5A231AB32A003ED57E /* Database */,
+				264B0E3B231A6928003ED57E /* DataModel */,
 				262152EB231956F10003F658 /* AppDelegate.swift */,
 				262152EF231956F10003F658 /* Main.storyboard */,
 				262152F5231956F30003F658 /* Assets.xcassets */,
 				262152F7231956F30003F658 /* LaunchScreen.storyboard */,
 				262152FA231956F30003F658 /* Info.plist */,
-				262152F2231956F10003F658 /* A1ver2_zhiyan.xcdatamodeld */,
 				262153002319573D0003F658 /* Sight.swift */,
 				26215302231957A10003F658 /* SightsTableViewController.swift */,
 				26215304231958260003F658 /* NewSightViewController.swift */,
 				26215306231958710003F658 /* SightTableViewCell.swift */,
 			);
 			path = A1ver2_zhiyan;
+			sourceTree = "<group>";
+		};
+		264B0E3B231A6928003ED57E /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				264B0E5B231AB429003ED57E /* SightEntity+CoreDataClass.swift */,
+				264B0E5C231AB429003ED57E /* SightEntity+CoreDataProperties.swift */,
+				264B0E3C231A69CF003ED57E /* SightModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		264B0E5A231AB32A003ED57E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				264B0E60231AB50B003ED57E /* CoreDataController.swift */,
+				264B0E5F231AB50B003ED57E /* DatabaseProtocol.swift */,
+				264B0E61231AB50B003ED57E /* MulticastDelegate.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,12 +178,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				264B0E5D231AB429003ED57E /* SightEntity+CoreDataClass.swift in Sources */,
 				26215303231957A10003F658 /* SightsTableViewController.swift in Sources */,
+				264B0E63231AB50B003ED57E /* CoreDataController.swift in Sources */,
 				262153012319573D0003F658 /* Sight.swift in Sources */,
 				262152EC231956F10003F658 /* AppDelegate.swift in Sources */,
-				262152F4231956F10003F658 /* A1ver2_zhiyan.xcdatamodeld in Sources */,
+				264B0E3E231A69CF003ED57E /* SightModel.xcdatamodeld in Sources */,
 				26215305231958260003F658 /* NewSightViewController.swift in Sources */,
+				264B0E5E231AB429003ED57E /* SightEntity+CoreDataProperties.swift in Sources */,
+				264B0E64231AB50B003ED57E /* MulticastDelegate.swift in Sources */,
 				26215307231958710003F658 /* SightTableViewCell.swift in Sources */,
+				264B0E62231AB50B003ED57E /* DatabaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,13 +390,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		262152F2231956F10003F658 /* A1ver2_zhiyan.xcdatamodeld */ = {
+		264B0E3C231A69CF003ED57E /* SightModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				262152F3231956F10003F658 /* A1ver2_zhiyan.xcdatamodel */,
+				264B0E3D231A69CF003ED57E /* SightModel.xcdatamodel */,
 			);
-			currentVersion = 262152F3231956F10003F658 /* A1ver2_zhiyan.xcdatamodel */;
-			path = A1ver2_zhiyan.xcdatamodeld;
+			currentVersion = 264B0E3D231A69CF003ED57E /* SightModel.xcdatamodel */;
+			path = SightModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

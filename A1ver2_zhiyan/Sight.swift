@@ -15,13 +15,14 @@ class Sight: NSObject {
     var desc : String
     var lat : String
     var lon : String
-
+    var icon : String
     
-    init(image: UIImage,name : String,desc: String,lat : String, lon : String) {
+    init(image: UIImage,name : String,desc: String,lat : String, lon : String, icon : String) {
         self.image = image
         self.name = name
         self.desc = desc
         self.lat = lat
         self.lon = lon
+        self.icon = icon
     }
 }
