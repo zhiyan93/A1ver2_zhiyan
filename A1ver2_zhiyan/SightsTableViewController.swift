@@ -37,7 +37,7 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController   //coredata
         
-        createDefaultSights()
+      //  createDefaultSights()
         filteredSights = sights
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -69,6 +69,11 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
 //    func onTeamChange(change: DatabaseChange, teamHeroes: [SuperHero]) {
 //        // Won't be called.
 //    }
+    
+    @IBAction func sortBtn(_ sender: Any) {
+        showActionSheet()
+        
+    }
     
     func onSightListChange(change: DatabaseChange, sightsDB : [SightEntity]) {
         sights = sightsDB
@@ -147,10 +152,7 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
 //
 //    }
     
-    func createDefaultSights() {
-//        sights.append(SightEntity(image: #imageLiteral(resourceName: "Old Treasury"), name: "Shrine of Remembrance", desc: "Shrine of Remembrance desc", lat: "100", lon: "100",icon: "icon1"))
-//        sights.append(SightEntity(image: #imageLiteral(resourceName: "Melbourne Museum"), name: "Mebourne Museum", desc: "Mebourne Museum desc", lat: "100", lon: "100",icon: "icon2"))
-    }
+ 
     
     func displayMessage(title: String, message: String) {
         // Setup an alert to show user details about the Person
@@ -162,7 +164,25 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
         self.present(alertController, animated: true, completion: nil)
     }
     
-   
+    func showActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel  = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let action1 = UIAlertAction(title: "A-Z", style: .default) { action in self.filteredSights.sort {$0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending}; self.tableView.reloadData() }
+        
+        let action2 = UIAlertAction(title: "Z-A", style: .default) { action in self.filteredSights.sort {$0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedDescending};
+            self.tableView.reloadData()
+        }
+    
+        
+            
+    
+        actionSheet.addAction(cancel)
+        actionSheet.addAction(action1)
+        actionSheet.addAction(action2)
+    
+        
+        present(actionSheet,animated: true, completion: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.

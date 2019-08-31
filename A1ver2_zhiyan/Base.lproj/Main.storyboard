@@ -84,11 +84,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Historical Sights" id="wfP-vT-joJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uMC-RN-ba3">
-                            <connections>
-                                <segue destination="XMQ-0U-KfK" kind="show" identifier="addSightSegue" id="Lmg-Qs-yy9"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="uMC-RN-ba3">
+                                <connections>
+                                    <segue destination="XMQ-0U-KfK" kind="show" identifier="addSightSegue" id="Lmg-Qs-yy9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="sort" id="YBe-08-pnk">
+                                <connections>
+                                    <action selector="sortBtn:" destination="VOn-xX-sSM" id="LGA-Kv-wXm"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stL-nU-6hB" userLabel="First Responder" sceneMemberID="firstResponder"/>
