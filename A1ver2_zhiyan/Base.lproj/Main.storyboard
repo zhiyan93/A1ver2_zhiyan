@@ -10,6 +10,42 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Home-->
+        <scene sceneID="BSN-OR-hBs">
+            <objects>
+                <viewController title="Home" id="KOg-PP-OdA" customClass="HomeViewController" customModule="A1ver2_zhiyan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="41L-sO-HOe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="K1O-Ek-dYh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K1O-Ek-dYh" firstAttribute="top" secondItem="Zn6-vr-oOP" secondAttribute="top" id="84X-7Z-Cd9"/>
+                            <constraint firstAttribute="bottom" secondItem="K1O-Ek-dYh" secondAttribute="bottom" id="O8U-Gr-h7R"/>
+                            <constraint firstAttribute="trailing" secondItem="K1O-Ek-dYh" secondAttribute="trailing" id="dX5-AF-pSu"/>
+                            <constraint firstItem="K1O-Ek-dYh" firstAttribute="leading" secondItem="41L-sO-HOe" secondAttribute="leading" id="ina-xO-qZl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zn6-vr-oOP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z6E-Xe-1Na">
+                        <barButtonItem key="rightBarButtonItem" title="list" id="Ukd-0G-xup">
+                            <connections>
+                                <segue destination="VOn-xX-sSM" kind="show" id="F5m-MJ-DcS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="K1O-Ek-dYh" id="gsk-tv-Kph"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRJ-Dg-TA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="80"/>
+        </scene>
         <!--Historical Sights-->
         <scene sceneID="zpH-me-HMr">
             <objects>
@@ -26,7 +62,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heM-0p-5qy">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="heM-0p-5qy">
                                             <rect key="frame" x="178" y="27" width="200" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -38,7 +74,7 @@
                                                 <constraint firstAttribute="height" constant="100" id="WfH-VL-1CW"/>
                                             </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Qi-ms-WIb">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qi-ms-WIb">
                                             <rect key="frame" x="178" y="59" width="224" height="51"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -46,7 +82,7 @@
                                                 <constraint firstAttribute="width" constant="224" id="a5d-ej-LY5"/>
                                             </constraints>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
@@ -286,12 +322,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="VOn-xX-sSM" kind="relationship" relationship="rootViewController" id="vN4-B2-SNg"/>
+                        <segue destination="KOg-PP-OdA" kind="relationship" relationship="rootViewController" id="D4z-D8-5Zz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzL-OC-aVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="78.348214285714278"/>
+            <point key="canvasLocation" x="-604" y="78"/>
         </scene>
     </scenes>
     <resources>
