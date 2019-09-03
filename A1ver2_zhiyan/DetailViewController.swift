@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, SightSelectDelegate {
+class DetailViewController: UIViewController {
 
     
     @IBOutlet weak var sightName: UITextField!
@@ -17,25 +17,42 @@ class DetailViewController: UIViewController, SightSelectDelegate {
     
     @IBOutlet weak var sightDesc: UITextView!
     
-    @IBOutlet weak var mapBtn: UIBarButtonItem!
+  //  @IBOutlet weak var backBtn: UIButton!
+    // @IBOutlet weak var mapBtn: UIBarButtonItem!
+    
+   //  @IBOutlet weak var bar: UINavigationItem!
+    var selectedSight : SightEntity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       changeValue()
         // Do any additional setup after loading the view.
+     
+    }
+   
+   
+  //  @IBAction func backBtn(_ sender: Any) {
+//        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "homeScreen") as! HomeViewController
+//        present(homeScreen, animated: true, completion: nil)
+//    }
+    
+    
+    
+    func changeValue()  {
+        //let homeScreen = storyboard?.instantiateViewController(withIdentifier: "homeScreen") as! HomeViewController
+      //  homeScreen.sightSelectDelegate = self
+        if selectedSight != nil {
+            let tapedSight = selectedSight!
+         //    bar.title = tapedSight.name
+            
+            sightName.text = tapedSight.name
+            sightDesc.text = tapedSight.desc
+            sightImage.image = UIImage(data: tapedSight.image! as Data)
+        }
+     
+        
     }
     
-    
-    @IBAction func mapBtn(_ sender: Any) {
-        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "homeScreen") as! HomeViewController
-        homeScreen.sightSelectDelegate = self
-        present(homeScreen, animated: true, completion: nil)
-    }
-    
-    func didSightSelect(_ tapedSight: SightEntity) {
-        sightName.text = tapedSight.name
-        sightDesc.text = tapedSight.desc
-        sightImage.image = UIImage(data: tapedSight.image! as Data)
         
     }
     
@@ -49,5 +66,5 @@ class DetailViewController: UIViewController, SightSelectDelegate {
     }
     */
 
-}
+
 

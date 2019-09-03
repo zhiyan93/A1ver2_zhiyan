@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol AddSightDelegate : AnyObject {
     func addSight(newSight : Sight) -> Bool
@@ -31,6 +32,40 @@ class NewSightViewController: UIViewController , UIImagePickerControllerDelegate
         // Get the database controller once from the App Delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         databaseController = appDelegate.databaseController
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+    }
+    
+    var locationManager: CLLocationManager = CLLocationManager()
+    var currentLocation: CLLocationCoordinate2D?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        locationManager.stopUpdatingLocation()
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last!
+        currentLocation = location.coordinate
+    }
+    
+    @IBAction func currentLocBtn(_ sender: Any) {
+        if let currentLocation = currentLocation {
+            sightLat.text = "\(currentLocation.latitude)"
+            sightLon.text = "\(currentLocation.longitude)"
+        }
+        else {
+            let alertController = UIAlertController(title: "Location Not Found", message: "The location has not yet been determined.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func selectIconBtn(_ sender: Any) {
@@ -126,6 +161,12 @@ class NewSightViewController: UIViewController , UIImagePickerControllerDelegate
     }
     */
 
+}
+
+extension NewSightViewController: CLLocationManagerDelegate {
+    
+    
+    
 }
 
 

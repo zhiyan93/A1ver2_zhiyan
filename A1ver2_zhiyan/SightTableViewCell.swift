@@ -18,8 +18,9 @@ class SightTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        sightName.adjustsFontForContentSizeCategory = true
     }
-
+  
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

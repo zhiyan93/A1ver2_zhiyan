@@ -12,9 +12,9 @@ import UIKit
 import MapKit
 import CoreData
 
-protocol SightSelectDelegate {
-    func didSightSelect(_ tapedSight : SightEntity)
-}
+//protocol SightSelectDelegate {
+//   func didSightSelect(_ tapedSight : SightEntity)
+//}
 
 
 class HomeViewController: UIViewController, DatabaseListener {
@@ -23,11 +23,11 @@ class HomeViewController: UIViewController, DatabaseListener {
         sights = sightsDB
     }
     
-     var sightSelectDelegate : SightSelectDelegate?
+  //  var sightSelectDelegate : SightSelectDelegate?
     
     private let locationManager = CLLocationManager()
     private var currentCoordinate: CLLocationCoordinate2D?
-    
+    var selectedSight : SightEntity?
     var sights : [SightEntity] = []
     weak var databaseController : DatabaseProtocol?
     weak var addSightDelegate: AddSightDelegate?
@@ -215,12 +215,18 @@ extension HomeViewController : MKMapViewDelegate {
         let buttonNum = control.tag
 //        let detailScreen = storyboard?.instantiateViewController(withIdentifier: "Sight Detail") as! DetailViewController
 //        present(detailScreen, animated: true, completion: nil)
-        let selectedSight = sights[buttonNum]
-       // sightSelectDelegate = DetailViewController()
-        if sightSelectDelegate != nil {
-        sightSelectDelegate?.didSightSelect(selectedSight)
+        selectedSight = sights[buttonNum]
+     //   print(selectedSight!.name)
+//        self.sightSelectDelegate = DetailViewController()
+       if selectedSight != nil {
+//            sightSelectDelegate?.didSightSelect(selectedSight!)
+         //dismiss(animated: true, completion: nil)
+        let detailScreen = storyboard?.instantiateViewController(withIdentifier: "Sight Detail") as! DetailViewController
+        detailScreen.selectedSight = selectedSight!
+            present(detailScreen, animated: true, completion: nil)
+    //  dismiss(animated: true, completion: nil)
+//    }
         }
-        dismiss(animated: true, completion: nil)
     }
         
     func resizeImage(iniImage : UIImage) -> UIImage {
@@ -234,9 +240,9 @@ extension HomeViewController : MKMapViewDelegate {
     }
     
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-    }
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//
+//    }
     
 }
 
