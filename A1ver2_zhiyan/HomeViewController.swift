@@ -43,22 +43,33 @@ class HomeViewController: UIViewController, DatabaseListener {
         
         mapView.delegate = self
         configureLocationServices()
+        
         // Do any additional setup after loading the view.
            //detail page
+       
     }
-    
+   
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "sightListSegue" {
+            let destination = segue.destination as! SightsTableViewController
+            destination.focusSightDelegate = self
+        }
     }
-     */ override func viewWillAppear(_ animated: Bool) {
+ 
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
+    removeAllAnnotations()
+        addAnnotations()
+       // mapView.reloadInputViews()
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,7 +98,7 @@ class HomeViewController: UIViewController, DatabaseListener {
     
     private func zoomToLatestLocation(with coordinate : CLLocationCoordinate2D) {
         
-        let zoomRegion = MKCoordinateRegion(center: coordinate,latitudinalMeters: 15000,longitudinalMeters: 15000)
+        let zoomRegion = MKCoordinateRegion(center: coordinate,latitudinalMeters: 5000,longitudinalMeters: 5000)
         mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
     }
     
@@ -99,14 +110,26 @@ class HomeViewController: UIViewController, DatabaseListener {
       //  mapView.addAnnotation(myAnnotation)
         for s in sights {
              addSightAnnotation(sight: s)
+            
+//            if let latitude = Double(s.latitude!), let longitude = Double(s.longitude!), let identifier = s.name {
+//                setGeofencing(lat: latitude, lon: longitude, radius: 200, identifier: identifier)
+//            }
+            
         }
        
+    }
+    
+    func removeAllAnnotations() {
+        let annotations = mapView.annotations.filter {
+            $0 !== self.mapView.userLocation
+        }
+        mapView.removeAnnotations(annotations)
     }
     
     private func addSightAnnotation(sight: SightEntity) {
         let myAnnotation = MKPointAnnotation()
         myAnnotation.title = sight.name
-        myAnnotation.subtitle = sight.desc
+      //  myAnnotation.subtitle = sight.desc
         if let lat = Double(sight.latitude!), let lon = Double(sight.longitude!) {
                myAnnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         } else {
@@ -170,6 +193,11 @@ extension HomeViewController : MKMapViewDelegate {
                 configureDetailView(annotationView: annotationView!, image: image!)
                 configureRightView(annotationView: annotationView!,tagNum: sights.firstIndex(of: s) ?? 0 )
                 annotationView?.frame.size = CGSize(width: 60, height: 40)
+            
+                
+                if let latitude = Double(s.latitude!), let longitude = Double(s.longitude!), let identifier = s.name {
+                    setGeofencing(lat: latitude, lon: longitude, radius: 500, identifier: identifier)
+                    }
                 break
             }
         }
@@ -244,7 +272,45 @@ extension HomeViewController : MKMapViewDelegate {
 //
 //    }
     
+    func setGeofencing (lat: Double, lon: Double, radius: Double, identifier : String ) {
+        //self.locationManager.requestAlwaysAuthorization()
+        // Your coordinates go here (lat, lon)
+        let geofenceRegionCenter = CLLocationCoordinate2D(
+            latitude: lat,
+            longitude: lon
+        )
+        
+        /* Create a region centered on desired location,
+         choose a radius for the region (in meters)
+         choose a unique identifier for that region */
+        let geofenceRegion = CLCircularRegion(
+            center: geofenceRegionCenter,
+            radius: radius,
+            identifier: identifier
+        )
+        
+        
+        geofenceRegion.notifyOnEntry = true
+       geofenceRegion.notifyOnExit = true
+        
+        self.locationManager.startMonitoring(for: geofenceRegion)
+    }
+    
 }
+
+extension HomeViewController : FocusSightDelegate {
+    func foucusSight(sight: SightEntity) {
+        if let lat = Double(sight.latitude!), let lon = Double(sight.longitude!) {
+          let coordinate =  CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            zoomToLatestLocation(with: coordinate)
+            
+        }
+    }
+    
+    
+}
+
+
 
 
   

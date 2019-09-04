@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" id="Z6E-Xe-1Na">
                         <barButtonItem key="rightBarButtonItem" title="list" id="Ukd-0G-xup">
                             <connections>
-                                <segue destination="VOn-xX-sSM" kind="show" id="F5m-MJ-DcS"/>
+                                <segue destination="VOn-xX-sSM" kind="show" identifier="sightListSegue" id="F5m-MJ-DcS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

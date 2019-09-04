@@ -9,17 +9,13 @@
 import UIKit
 import CoreData
 
+protocol FocusSightDelegate {
+    func foucusSight(sight: SightEntity)
+}
+
 class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,DatabaseListener{
-    //AddSightDelegate
-//    func addSight(newSight: Sight) -> Bool {
-//        sights.append(newSight)
-//        filteredSights.append(newSight)
-//        tableView.beginUpdates()
-//        tableView.insertRows(at: [IndexPath(row: filteredSights.count - 1, section: 0)], with: .automatic)
-//        tableView.endUpdates()
-//        tableView.reloadSections([SECTION_COUNT], with: .automatic)
-//        return true
-//    }
+  
+    var focusSightDelegate : FocusSightDelegate?
     
     let SECTION_SIGHT = 0
     let SECTION_COUNT = 1
@@ -65,6 +61,7 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
+        
     }
     
     var listenerType = ListenerType.sight
@@ -131,8 +128,17 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_COUNT {
-            tableView.deselectRow(at: indexPath, animated: false)
-            return
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        if indexPath.section == SECTION_SIGHT {
+            let sight = filteredSights[indexPath.row]
+            focusSightDelegate?.foucusSight(sight: sight)
+            print("row \(indexPath.row) selected")
+            tableView.deselectRow(at: indexPath, animated: true)
+            navigationController?.popViewController(animated: true)
+        }
+        
+        
         }
         
 //        if addSightDelegate!.addSight(newSight: filteredSights[indexPath.row]) {
@@ -142,19 +148,16 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
         
 //        tableView.deselectRow(at: indexPath, animated: true)
 //        displayMessage(title: "Party Full", message: "Cannot add any more members to party")
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//        if segue.identifier == "addSightSegue" {
-//            let destination = segue.destination as! NewSightViewController
-//            destination.addSightDelegate =  self
-//        }
-//
 //    }
     
- 
+//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+////        // Get the new view controller using segue.destination.
+////        // Pass the selected object to the new view controller.
+//
+//       }
+//
+//   }
+
     
     func displayMessage(title: String, message: String) {
         // Setup an alert to show user details about the Person
