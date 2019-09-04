@@ -87,7 +87,7 @@ class HomeViewController: UIViewController, DatabaseListener {
     
     private func zoomToLatestLocation(with coordinate : CLLocationCoordinate2D) {
         
-        let zoomRegion = MKCoordinateRegion(center: coordinate,latitudinalMeters: 10000,longitudinalMeters: 10000)
+        let zoomRegion = MKCoordinateRegion(center: coordinate,latitudinalMeters: 15000,longitudinalMeters: 15000)
         mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
     }
     

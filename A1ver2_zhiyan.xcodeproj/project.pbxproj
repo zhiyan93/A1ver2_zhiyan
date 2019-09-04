@@ -37,6 +37,7 @@
 		26215302231957A10003F658 /* SightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightsTableViewController.swift; sourceTree = "<group>"; };
 		26215304231958260003F658 /* NewSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSightViewController.swift; sourceTree = "<group>"; };
 		26215306231958710003F658 /* SightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTableViewCell.swift; sourceTree = "<group>"; };
+		2634CABC231F67F500D32368 /* MelbourneCBD.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = MelbourneCBD.gpx; path = ../../Downloads/MelbourneCBD.gpx; sourceTree = "<group>"; };
 		264B0E3D231A69CF003ED57E /* SightModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SightModel.xcdatamodel; sourceTree = "<group>"; };
 		264B0E5B231AB429003ED57E /* SightEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SightEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		264B0E5C231AB429003ED57E /* SightEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SightEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		262152DF231956F10003F658 = {
 			isa = PBXGroup;
 			children = (
+				2634CABC231F67F500D32368 /* MelbourneCBD.gpx */,
 				262152EA231956F10003F658 /* A1ver2_zhiyan */,
 				262152E9231956F10003F658 /* Products */,
 			);

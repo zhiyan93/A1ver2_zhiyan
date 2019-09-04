@@ -69,6 +69,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xwQ-0C-5VZ">
+                                <rect key="frame" x="16" y="353" width="382" height="151"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="qty-bA-fIn"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTm-Jr-xpu">
                                 <rect key="frame" x="16" y="804" width="382" height="33"/>
                                 <constraints>
@@ -80,27 +90,27 @@
                                     <segue destination="x8B-jn-F1d" kind="show" id="i6v-ep-Pwq"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xwQ-0C-5VZ">
-                                <rect key="frame" x="16" y="353" width="382" height="151"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dm8-ne-fnU">
+                                <rect key="frame" x="20" y="562" width="374" height="210"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="151" id="qty-bA-fIn"/>
+                                    <constraint firstAttribute="height" constant="210" id="Ts9-ct-Rd1"/>
+                                    <constraint firstAttribute="width" constant="374" id="khT-ON-yda"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ftg-Pm-UDz" firstAttribute="trailing" secondItem="CM7-VD-VcM" secondAttribute="trailing" constant="16" id="3Tt-TM-xGq"/>
                             <constraint firstItem="KfR-CN-qmz" firstAttribute="leading" secondItem="ftg-Pm-UDz" secondAttribute="leading" constant="16" id="EbF-hZ-xU3"/>
+                            <constraint firstItem="ftg-Pm-UDz" firstAttribute="trailing" secondItem="dm8-ne-fnU" secondAttribute="trailing" constant="20" id="Fnj-XM-u7d"/>
                             <constraint firstItem="CM7-VD-VcM" firstAttribute="top" secondItem="KfR-CN-qmz" secondAttribute="bottom" constant="16" id="KM5-Rt-tZe"/>
+                            <constraint firstItem="BTm-Jr-xpu" firstAttribute="top" secondItem="dm8-ne-fnU" secondAttribute="bottom" constant="32" id="NyZ-SG-4yc"/>
                             <constraint firstItem="ftg-Pm-UDz" firstAttribute="trailing" secondItem="xwQ-0C-5VZ" secondAttribute="trailing" constant="16" id="Sad-a2-du2"/>
                             <constraint firstItem="xwQ-0C-5VZ" firstAttribute="leading" secondItem="ftg-Pm-UDz" secondAttribute="leading" constant="16" id="YQQ-Er-PX9"/>
                             <constraint firstItem="ftg-Pm-UDz" firstAttribute="trailing" secondItem="BTm-Jr-xpu" secondAttribute="trailing" constant="16" id="edV-Yo-RUU"/>
                             <constraint firstItem="KfR-CN-qmz" firstAttribute="top" secondItem="ftg-Pm-UDz" secondAttribute="top" constant="16" id="fL0-NX-spm"/>
                             <constraint firstItem="ftg-Pm-UDz" firstAttribute="trailing" secondItem="KfR-CN-qmz" secondAttribute="trailing" constant="16" id="lYr-Zz-jCq"/>
+                            <constraint firstItem="dm8-ne-fnU" firstAttribute="leading" secondItem="ftg-Pm-UDz" secondAttribute="leading" constant="20" id="lZR-mo-5kR"/>
                             <constraint firstItem="CM7-VD-VcM" firstAttribute="leading" secondItem="ftg-Pm-UDz" secondAttribute="leading" constant="16" id="oa6-7g-dEQ"/>
                             <constraint firstItem="ftg-Pm-UDz" firstAttribute="bottom" secondItem="BTm-Jr-xpu" secondAttribute="bottom" constant="25" id="vVv-0g-uIQ"/>
                             <constraint firstItem="BTm-Jr-xpu" firstAttribute="leading" secondItem="ftg-Pm-UDz" secondAttribute="leading" constant="16" id="wPm-f9-aiR"/>
@@ -109,6 +119,7 @@
                         <viewLayoutGuide key="safeArea" id="ftg-Pm-UDz"/>
                     </view>
                     <connections>
+                        <outlet property="locMap" destination="dm8-ne-fnU" id="75r-2C-DGt"/>
                         <outlet property="sightDesc" destination="xwQ-0C-5VZ" id="Ha4-6p-OJB"/>
                         <outlet property="sightImage" destination="CM7-VD-VcM" id="gbP-Xf-gAw"/>
                         <outlet property="sightName" destination="KfR-CN-qmz" id="IYI-cU-VvF"/>
@@ -116,19 +127,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="San-SB-rcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-604" y="816"/>
+            <point key="canvasLocation" x="-604.34782608695662" y="815.625"/>
         </scene>
         <!--Historical Sights-->
         <scene sceneID="zpH-me-HMr">
             <objects>
                 <tableViewController id="VOn-xX-sSM" customClass="SightsTableViewController" customModule="A1ver2_zhiyan" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7KC-rP-r1c">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7KC-rP-r1c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sightCell" rowHeight="120" id="z91-Dq-i6I" customClass="SightTableViewCell" customModule="A1ver2_zhiyan" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z91-Dq-i6I" id="H0u-Z1-hVj">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
@@ -178,7 +189,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sightSizeCell" id="lab-k0-fPK">
-                                <rect key="frame" x="0.0" y="175.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lab-k0-fPK" id="m05-j8-w4B">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

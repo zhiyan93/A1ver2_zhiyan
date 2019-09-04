@@ -53,6 +53,8 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
         
         // This view controller decides how the search controller is presented.
         definesPresentationContext = true
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,25 +186,30 @@ class SightsTableViewController: UITableViewController,UISearchResultsUpdating ,
         present(actionSheet,animated: true, completion: nil)
     }
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if indexPath.section == SECTION_SIGHT {
+            return true
+        }
+        return false
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if editingStyle == .delete && indexPath.section == SECTION_SIGHT {
+                databaseController?.deleteSight(sight: filteredSights[indexPath.row])
+            }
+          
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
