@@ -11,7 +11,6 @@
 		262152F1231956F10003F658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262152EF231956F10003F658 /* Main.storyboard */; };
 		262152F6231956F30003F658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 262152F5231956F30003F658 /* Assets.xcassets */; };
 		262152F9231956F30003F658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262152F7231956F30003F658 /* LaunchScreen.storyboard */; };
-		262153012319573D0003F658 /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262153002319573D0003F658 /* Sight.swift */; };
 		26215303231957A10003F658 /* SightsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26215302231957A10003F658 /* SightsTableViewController.swift */; };
 		26215305231958260003F658 /* NewSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26215304231958260003F658 /* NewSightViewController.swift */; };
 		26215307231958710003F658 /* SightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26215306231958710003F658 /* SightTableViewCell.swift */; };
@@ -22,8 +21,9 @@
 		264B0E63231AB50B003ED57E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E60231AB50B003ED57E /* CoreDataController.swift */; };
 		264B0E64231AB50B003ED57E /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E61231AB50B003ED57E /* MulticastDelegate.swift */; };
 		264ED03C231B88EA00946C6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264ED03B231B88EA00946C6C /* HomeViewController.swift */; };
-		264ED03E231B90E400946C6C /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264ED03D231B90E400946C6C /* LocationAnnotation.swift */; };
+		267800E823211500003E9377 /* EditSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267800E723211500003E9377 /* EditSightViewController.swift */; };
 		267CFBB5231D501C00F27707 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CFBB4231D501C00F27707 /* DetailViewController.swift */; };
+		26EADB33232337640072BEEF /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EADB32232337640072BEEF /* Sight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,6 @@
 		262152F5231956F30003F658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		262152F8231956F30003F658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		262152FA231956F30003F658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		262153002319573D0003F658 /* Sight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
 		26215302231957A10003F658 /* SightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightsTableViewController.swift; sourceTree = "<group>"; };
 		26215304231958260003F658 /* NewSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSightViewController.swift; sourceTree = "<group>"; };
 		26215306231958710003F658 /* SightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,8 +44,9 @@
 		264B0E60231AB50B003ED57E /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		264B0E61231AB50B003ED57E /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		264ED03B231B88EA00946C6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		264ED03D231B90E400946C6C /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
+		267800E723211500003E9377 /* EditSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSightViewController.swift; sourceTree = "<group>"; };
 		267CFBB4231D501C00F27707 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		26EADB32232337640072BEEF /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +80,7 @@
 		262152EA231956F10003F658 /* A1ver2_zhiyan */ = {
 			isa = PBXGroup;
 			children = (
+				26EADB32232337640072BEEF /* Sight.swift */,
 				264B0E5A231AB32A003ED57E /* Database */,
 				264B0E3B231A6928003ED57E /* DataModel */,
 				262152EB231956F10003F658 /* AppDelegate.swift */,
@@ -87,13 +88,12 @@
 				262152F5231956F30003F658 /* Assets.xcassets */,
 				262152F7231956F30003F658 /* LaunchScreen.storyboard */,
 				262152FA231956F30003F658 /* Info.plist */,
-				262153002319573D0003F658 /* Sight.swift */,
 				26215302231957A10003F658 /* SightsTableViewController.swift */,
 				26215304231958260003F658 /* NewSightViewController.swift */,
 				26215306231958710003F658 /* SightTableViewCell.swift */,
 				264ED03B231B88EA00946C6C /* HomeViewController.swift */,
-				264ED03D231B90E400946C6C /* LocationAnnotation.swift */,
 				267CFBB4231D501C00F27707 /* DetailViewController.swift */,
+				267800E723211500003E9377 /* EditSightViewController.swift */,
 			);
 			path = A1ver2_zhiyan;
 			sourceTree = "<group>";
@@ -190,10 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				264B0E5D231AB429003ED57E /* SightEntity+CoreDataClass.swift in Sources */,
-				264ED03E231B90E400946C6C /* LocationAnnotation.swift in Sources */,
+				267800E823211500003E9377 /* EditSightViewController.swift in Sources */,
 				26215303231957A10003F658 /* SightsTableViewController.swift in Sources */,
 				264B0E63231AB50B003ED57E /* CoreDataController.swift in Sources */,
-				262153012319573D0003F658 /* Sight.swift in Sources */,
 				262152EC231956F10003F658 /* AppDelegate.swift in Sources */,
 				264B0E3E231A69CF003ED57E /* SightModel.xcdatamodeld in Sources */,
 				26215305231958260003F658 /* NewSightViewController.swift in Sources */,
@@ -201,6 +200,7 @@
 				264B0E64231AB50B003ED57E /* MulticastDelegate.swift in Sources */,
 				26215307231958710003F658 /* SightTableViewCell.swift in Sources */,
 				264B0E62231AB50B003ED57E /* DatabaseProtocol.swift in Sources */,
+				26EADB33232337640072BEEF /* Sight.swift in Sources */,
 				264ED03C231B88EA00946C6C /* HomeViewController.swift in Sources */,
 				267CFBB5231D501C00F27707 /* DetailViewController.swift in Sources */,
 			);

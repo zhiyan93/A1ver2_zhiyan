@@ -20,7 +20,14 @@ import CoreData
 class HomeViewController: UIViewController, DatabaseListener {
 
     func onSightListChange(change: DatabaseChange, sightsDB: [SightEntity]) {
-        sights = sightsDB
+        for s in locationManager.monitoredRegions {
+            locationManager.stopMonitoring(for: s)
+        }
+        sights = sightsDB     //update sights by database
+        
+        for s in sights {      // update genfencing
+             setGeofen(sight: s)
+        }
     }
     
   //  var sightSelectDelegate : SightSelectDelegate?
@@ -46,7 +53,7 @@ class HomeViewController: UIViewController, DatabaseListener {
         
         // Do any additional setup after loading the view.
            //detail page
-       
+      
     }
    
 
@@ -65,10 +72,11 @@ class HomeViewController: UIViewController, DatabaseListener {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        databaseController?.addListener(listener: self)
-    removeAllAnnotations()
-        addAnnotations()
-       // mapView.reloadInputViews()
+      
+       databaseController?.addListener(listener: self)
+      removeAllAnnotations()
+       addAnnotations()
+     
        
     }
     
@@ -124,6 +132,7 @@ class HomeViewController: UIViewController, DatabaseListener {
             $0 !== self.mapView.userLocation
         }
         mapView.removeAnnotations(annotations)
+        
     }
     
     private func addSightAnnotation(sight: SightEntity) {
@@ -132,16 +141,17 @@ class HomeViewController: UIViewController, DatabaseListener {
       //  myAnnotation.subtitle = sight.desc
         if let lat = Double(sight.latitude!), let lon = Double(sight.longitude!) {
                myAnnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+          //  setGeofencing(lat: lat, lon: lon, radius: 500, identifier: sight.name!, set: true)   //geofencing
         } else {
             print("invalid coordinate")
             return
         }
         
         mapView.addAnnotation(myAnnotation)
+//        if let latitude = Double(myAnnotation.latitude!), let longitude = Double(myAnnotation.longitude!), let identifier = myAnnotation.name {
+//            setGeofencing(lat: latitude, lon: longitude, radius: 500, identifier: identifier, set: true)
+//        }
     }
-    
-    
-    
     
     
 }
@@ -152,11 +162,11 @@ extension HomeViewController : CLLocationManagerDelegate {
         guard let latestLocation = locations.first else { return}
        
         
-        if currentCoordinate == nil {
-            zoomToLatestLocation(with: latestLocation.coordinate)
-            addAnnotations()
-        }
-        
+     //   if currentCoordinate == nil {
+           // zoomToLatestLocation(with: latestLocation.coordinate)
+        //    addAnnotations()
+       // }
+        zoomToLatestLocation(with: latestLocation.coordinate)
         currentCoordinate = latestLocation.coordinate
     }
     
@@ -189,15 +199,12 @@ extension HomeViewController : MKMapViewDelegate {
         for s in sights {
             if annotation.title == s.name {
                let image = UIImage(data: s.image! as Data)
-                annotationView?.image = image
+                annotationView?.image = UIImage(named: s.icon ?? "museum")
                 configureDetailView(annotationView: annotationView!, image: image!)
                 configureRightView(annotationView: annotationView!,tagNum: sights.firstIndex(of: s) ?? 0 )
-                annotationView?.frame.size = CGSize(width: 60, height: 40)
-            
-                
-                if let latitude = Double(s.latitude!), let longitude = Double(s.longitude!), let identifier = s.name {
-                    setGeofencing(lat: latitude, lon: longitude, radius: 500, identifier: identifier)
-                    }
+             //   configureLeftView(annotationView: annotationView!, iconName: s.icon ?? "museum")
+                annotationView?.frame.size = CGSize(width: 50, height: 50)
+
                 break
             }
         }
@@ -239,6 +246,17 @@ extension HomeViewController : MKMapViewDelegate {
         annotationView.rightCalloutAccessoryView = rightButton
     }
     
+//    func configureLeftView(annotationView : MKAnnotationView, iconName : String)
+//    {
+//       let leftView = UIImageView()
+//       leftView.image = #imageLiteral(resourceName: "museum")
+//        let views = ["iconView": leftView]
+//        leftView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[iconView(30)]", options: [], metrics: nil, views: views))
+//        leftView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[iconView(20)]", options: [], metrics: nil, views: views))
+//       annotationView.leftCalloutAccessoryView = leftView
+//
+//    }
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let buttonNum = control.tag
 //        let detailScreen = storyboard?.instantiateViewController(withIdentifier: "Sight Detail") as! DetailViewController
@@ -271,28 +289,23 @@ extension HomeViewController : MKMapViewDelegate {
 //    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 //
 //    }
+   // https://www.raywenderlich.com/5470-geofencing-with-core-location-getting-started
     
-    func setGeofencing (lat: Double, lon: Double, radius: Double, identifier : String ) {
-        //self.locationManager.requestAlwaysAuthorization()
-        // Your coordinates go here (lat, lon)
-        let geofenceRegionCenter = CLLocationCoordinate2D(
-            latitude: lat,
-            longitude: lon
-        )
-        
-        /* Create a region centered on desired location,
-         choose a radius for the region (in meters)
-         choose a unique identifier for that region */
+   
+    
+    func setGeofen (sight : SightEntity)
+    {
+        let lat = Double(sight.latitude!)!
+        let lon = Double(sight.longitude!)!
+        let geofenceRegionCenter = CLLocationCoordinate2D(latitude: lat ,longitude: lon)
         let geofenceRegion = CLCircularRegion(
             center: geofenceRegionCenter,
-            radius: radius,
-            identifier: identifier
+            radius: 500,
+            identifier: sight.name!
         )
         
-        
         geofenceRegion.notifyOnEntry = true
-       geofenceRegion.notifyOnExit = true
-        
+        geofenceRegion.notifyOnExit = true
         self.locationManager.startMonitoring(for: geofenceRegion)
     }
     
@@ -309,6 +322,8 @@ extension HomeViewController : FocusSightDelegate {
     
     
 }
+
+
 
 
 

@@ -9,9 +9,13 @@
 import UIKit
 import MapKit
 
-class DetailViewController: UIViewController, MKMapViewDelegate {
-
+class DetailViewController: UIViewController, MKMapViewDelegate ,DatabaseListener{
+    func onSightListChange(change: DatabaseChange, sightsDB: [SightEntity]) {
     
+    }
+    
+   
+   
     @IBOutlet weak var sightName: UITextField!
     
     @IBOutlet weak var sightImage: UIImageView!
@@ -19,27 +23,54 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var sightDesc: UITextView!
     
     @IBOutlet weak var locMap: MKMapView!
+    @IBOutlet weak var addressLabel: UILabel!
     //  @IBOutlet weak var backBtn: UIButton!
     // @IBOutlet weak var mapBtn: UIBarButtonItem!
     
    //  @IBOutlet weak var bar: UINavigationItem!
     var selectedSight : SightEntity?
     
+    weak var addSightDelegate: AddSightDelegate?
+    weak var databaseController : DatabaseProtocol?  //coredata
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        databaseController = appDelegate.databaseController   //coredata
+        
+        
+        
           locMap.delegate = self
-          changeValue()
+        
         // Do any additional setup after loading the view.
      
     }
- 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+       
+        
+        changeValue()
+        if selectedSight != nil {
+        getAddressFromLatLon(pdblLatitude: selectedSight!.latitude!, withLongitude: selectedSight!.longitude!)
+        }
+       // print(selectedSight!.name, "detail1 \n")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+        
+    }
+    
+    var listenerType = ListenerType.sight
    
   //  @IBAction func backBtn(_ sender: Any) {
 //        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "homeScreen") as! HomeViewController
 //        present(homeScreen, animated: true, completion: nil)
 //    }
-    
     
     
     func changeValue()  {
@@ -124,20 +155,71 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         locMap.addAnnotation(myAnnotation)
     }
-        
-    }
-
-
     
-    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "editSightSegue" {
+            let destination = segue.destination as! EditSightViewController
+           // destination.editSightDelegate = self
+            destination.sight = selectedSight
     }
-    */
+        
+    }
+    
+    // https://stackoverflow.com/questions/41358423/swift-generate-an-address-format-from-reverse-geocoding
+    func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = Double("\(pdblLatitude)")!
+        //21.228124
+        let lon: Double = Double("\(pdblLongitude)")!
+        //72.833770
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    var addressString : String = ""
+                    if pm.subLocality != nil {
+                        addressString = addressString + pm.subLocality! + ", "
+                    }
+                    
+                    if pm.subThoroughfare != nil {
+                        addressString = addressString + pm.subThoroughfare! + ", "
+                    }
+                    if pm.thoroughfare != nil {
+                        addressString = addressString + pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString = addressString + pm.locality!
+                    }
+                   // print(addressString)
+                    self.addressLabel.text = addressString
+                }
+        })
+        
+    }
+}
+
+
+
+    
+
+
+ 
 
 
 

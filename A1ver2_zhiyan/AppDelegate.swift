@@ -49,6 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             print("I woke up thanks to geofencing")
         }
+        //modified from lecture resource
+        let uiNavbarProxy = UINavigationBar.appearance()
+        uiNavbarProxy.barTintColor = UIColor(displayP3Red: 0.27, green: 0.3, blue: 0.4, alpha: 1)
+        uiNavbarProxy.tintColor = UIColor.white
+        uiNavbarProxy.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         return true
     }
 
@@ -202,3 +207,31 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // ...
     }
 }
+
+//extension UIColor {
+//    public convenience init?(hex: String) {
+//        let r, g, b, a: CGFloat
+//
+//        if hex.hasPrefix("#") {
+//            let start = hex.index(hex.startIndex, offsetBy: 1)
+//            let hexColor = String(hex[start...])
+//
+//            if hexColor.count == 8 {
+//                let scanner = Scanner(string: hexColor)
+//                var hexNumber: UInt64 = 0
+//
+//                if scanner.scanHexInt64(&hexNumber) {
+//                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+//                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+//                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+//                    a = CGFloat(hexNumber & 0x000000ff) / 255
+//
+//                    self.init(red: r, green: g, blue: b, alpha: a)
+//                    return
+//                }
+//            }
+//        }
+//
+//        return nil
+//    }
+//}
