@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, DatabaseListener {
         
         mapView.delegate = self
         configureLocationServices()
-        
+        print("homeview controller 1111")
         // Do any additional setup after loading the view.
            //detail page
       
