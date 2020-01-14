@@ -17,12 +17,13 @@
 		264B0E3E231A69CF003ED57E /* SightModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E3C231A69CF003ED57E /* SightModel.xcdatamodeld */; };
 		264B0E5D231AB429003ED57E /* SightEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E5B231AB429003ED57E /* SightEntity+CoreDataClass.swift */; };
 		264B0E5E231AB429003ED57E /* SightEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E5C231AB429003ED57E /* SightEntity+CoreDataProperties.swift */; };
-		264B0E62231AB50B003ED57E /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E5F231AB50B003ED57E /* DatabaseProtocol.swift */; };
-		264B0E63231AB50B003ED57E /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E60231AB50B003ED57E /* CoreDataController.swift */; };
-		264B0E64231AB50B003ED57E /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B0E61231AB50B003ED57E /* MulticastDelegate.swift */; };
 		264ED03C231B88EA00946C6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264ED03B231B88EA00946C6C /* HomeViewController.swift */; };
 		267800E823211500003E9377 /* EditSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267800E723211500003E9377 /* EditSightViewController.swift */; };
 		267CFBB5231D501C00F27707 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267CFBB4231D501C00F27707 /* DetailViewController.swift */; };
+		26832FCF23CE095B0057C4D6 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832FCC23CE095B0057C4D6 /* CoreDataController.swift */; };
+		26832FD023CE095B0057C4D6 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832FCD23CE095B0057C4D6 /* MulticastDelegate.swift */; };
+		26832FD123CE095B0057C4D6 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832FCE23CE095B0057C4D6 /* DatabaseProtocol.swift */; };
+		26832FD323CE09970057C4D6 /* MelbourneCBD.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 26832FD223CE09970057C4D6 /* MelbourneCBD.gpx */; };
 		26EADB33232337640072BEEF /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EADB32232337640072BEEF /* Sight.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,16 +37,16 @@
 		26215302231957A10003F658 /* SightsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightsTableViewController.swift; sourceTree = "<group>"; };
 		26215304231958260003F658 /* NewSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSightViewController.swift; sourceTree = "<group>"; };
 		26215306231958710003F658 /* SightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightTableViewCell.swift; sourceTree = "<group>"; };
-		2634CABC231F67F500D32368 /* MelbourneCBD.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = MelbourneCBD.gpx; path = ../../Downloads/MelbourneCBD.gpx; sourceTree = "<group>"; };
 		264B0E3D231A69CF003ED57E /* SightModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SightModel.xcdatamodel; sourceTree = "<group>"; };
 		264B0E5B231AB429003ED57E /* SightEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SightEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		264B0E5C231AB429003ED57E /* SightEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SightEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		264B0E5F231AB50B003ED57E /* DatabaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
-		264B0E60231AB50B003ED57E /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		264B0E61231AB50B003ED57E /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		264ED03B231B88EA00946C6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		267800E723211500003E9377 /* EditSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSightViewController.swift; sourceTree = "<group>"; };
 		267CFBB4231D501C00F27707 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		26832FCC23CE095B0057C4D6 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		26832FCD23CE095B0057C4D6 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		26832FCE23CE095B0057C4D6 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		26832FD223CE09970057C4D6 /* MelbourneCBD.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MelbourneCBD.gpx; sourceTree = "<group>"; };
 		26EADB32232337640072BEEF /* Sight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +64,8 @@
 		262152DF231956F10003F658 = {
 			isa = PBXGroup;
 			children = (
-				2634CABC231F67F500D32368 /* MelbourneCBD.gpx */,
+				26832FD223CE09970057C4D6 /* MelbourneCBD.gpx */,
+				26832FCB23CE08ED0057C4D6 /* Database */,
 				262152EA231956F10003F658 /* A1ver2_zhiyan */,
 				262152E9231956F10003F658 /* Products */,
 			);
@@ -81,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				26EADB32232337640072BEEF /* Sight.swift */,
-				264B0E5A231AB32A003ED57E /* Database */,
 				264B0E3B231A6928003ED57E /* DataModel */,
 				262152EB231956F10003F658 /* AppDelegate.swift */,
 				262152EF231956F10003F658 /* Main.storyboard */,
@@ -108,12 +109,12 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		264B0E5A231AB32A003ED57E /* Database */ = {
+		26832FCB23CE08ED0057C4D6 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				264B0E60231AB50B003ED57E /* CoreDataController.swift */,
-				264B0E5F231AB50B003ED57E /* DatabaseProtocol.swift */,
-				264B0E61231AB50B003ED57E /* MulticastDelegate.swift */,
+				26832FCC23CE095B0057C4D6 /* CoreDataController.swift */,
+				26832FCE23CE095B0057C4D6 /* DatabaseProtocol.swift */,
+				26832FCD23CE095B0057C4D6 /* MulticastDelegate.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -179,6 +180,7 @@
 				262152F9231956F30003F658 /* LaunchScreen.storyboard in Resources */,
 				262152F6231956F30003F658 /* Assets.xcassets in Resources */,
 				262152F1231956F10003F658 /* Main.storyboard in Resources */,
+				26832FD323CE09970057C4D6 /* MelbourneCBD.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,15 +193,15 @@
 			files = (
 				264B0E5D231AB429003ED57E /* SightEntity+CoreDataClass.swift in Sources */,
 				267800E823211500003E9377 /* EditSightViewController.swift in Sources */,
+				26832FCF23CE095B0057C4D6 /* CoreDataController.swift in Sources */,
 				26215303231957A10003F658 /* SightsTableViewController.swift in Sources */,
-				264B0E63231AB50B003ED57E /* CoreDataController.swift in Sources */,
 				262152EC231956F10003F658 /* AppDelegate.swift in Sources */,
 				264B0E3E231A69CF003ED57E /* SightModel.xcdatamodeld in Sources */,
+				26832FD123CE095B0057C4D6 /* DatabaseProtocol.swift in Sources */,
 				26215305231958260003F658 /* NewSightViewController.swift in Sources */,
 				264B0E5E231AB429003ED57E /* SightEntity+CoreDataProperties.swift in Sources */,
-				264B0E64231AB50B003ED57E /* MulticastDelegate.swift in Sources */,
+				26832FD023CE095B0057C4D6 /* MulticastDelegate.swift in Sources */,
 				26215307231958710003F658 /* SightTableViewCell.swift in Sources */,
-				264B0E62231AB50B003ED57E /* DatabaseProtocol.swift in Sources */,
 				26EADB33232337640072BEEF /* Sight.swift in Sources */,
 				264ED03C231B88EA00946C6C /* HomeViewController.swift in Sources */,
 				267CFBB5231D501C00F27707 /* DetailViewController.swift in Sources */,
